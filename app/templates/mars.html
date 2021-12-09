@@ -5,9 +5,9 @@
   <h1 class="display-4">Photos from Mars:</h1>
 
   <div class="row mb-3">
-    <form method="post" action="/mars">
+    <form method="get" action="/mars">
       <div class="input-group">
-        <input type="date" id="filter" class="form-control" name="filter" value="{{ todaysDate }}">
+        <input type="date" id="date" class="form-control" name="date" value="{{ date if date else todaysDate }}">
         <input type="submit" class="btn btn-primary" value="Submit">
       </div>
     </form>
