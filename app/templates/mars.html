@@ -4,5 +4,21 @@
 {% block content %}
   <h1 class="display-4">Photos from Mars:</h1>
 
-  <img src="https://via.placeholder.com/500">
+  <div class="row mb-3">
+    <form method="post" action="/mars">
+      <div class="input-group">
+        <input type="date" id="filter" class="form-control" name="filter" value="{{ todaysDate }}">
+        <input type="submit" class="btn btn-primary" value="Submit">
+      </div>
+    </form>
+  </div>
+  
+  <div class="row">
+  {% for photo in photos %}
+    <div class="col-lg-3">
+      <img src="{{ photo['img_src'] }}" class="img-fluid mb-3">
+    </div>
+  {% endfor %}
+  </div>
+
 {% endblock %}
