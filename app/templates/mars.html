@@ -7,7 +7,7 @@
   <div class="row mb-3">
     <form method="get" action="/mars">
       <div class="input-group">
-        <input type="date" id="date" class="form-control" name="date" value="{{ date if date else todaysDate }}">
+        <input type="date" id="date" class="form-control" name="date" value="{{ selectedDate if selectedDate else todaysDate }}">
         <input type="submit" class="btn btn-primary" value="Submit">
       </div>
     </form>
@@ -16,7 +16,9 @@
   <div class="row">
   {% for photo in photos %}
     <div class="col-lg-3">
-      <img src="{{ photo['img_src'] }}" class="img-fluid mb-3">
+      <a href="{{ photo.img_src }}" data-lightbox="{{ photo.sol }}">
+        <img src="{{ photo.img_src }}" class="img-fluid mb-3">
+      </a> 
     </div>
   {% endfor %}
   </div>
