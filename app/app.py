@@ -18,9 +18,8 @@ def index():
 def mars():
 
     todaysDate = datetime.datetime.now().strftime('%Y-%m-%d')
-    date = request.args.get('date') if request.args.get('date') else todaysDate
-    print(date)
+    selectedDate = request.args.get('date') if request.args.get('date') else todaysDate
 
-    response = requests.get("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date={}&camera=fhaz&api_key={}".format(date, API_KEY))
+    response = requests.get("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date={}&camera=fhaz&api_key={}".format(selectedDate, API_KEY))
     r = response.json()
-    return render_template('mars.html', photos=r['photos'], todaysDate=todaysDate, date=date)
+    return render_template('mars.html', photos=r['photos'], todaysDate=todaysDate, selectedDate=selectedDate)
